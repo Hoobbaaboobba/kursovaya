@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_buyerdatabase_FILE /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase)
+set(__QT_DEPLOY_TARGET_buyerdatabase_TYPE EXECUTABLE)

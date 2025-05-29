@@ -1,0 +1,9 @@
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/buyerdatabase.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/edit_cache.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/rebuild_cache.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/list_install_components.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/install.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/install/local.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/install/strip.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/buyerdatabase_autogen_timestamp_deps.dir
+/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles/buyerdatabase_autogen.dir

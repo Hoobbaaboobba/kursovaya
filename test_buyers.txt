@@ -1,0 +1,6 @@
+BUYER_DATABASE
+Ivanov|Ivan|Petrovich|1234 567890|+7 (999) 123-45-67|ivanov@email.com|Apartment|Moscow, Lenina St. 10|75.5|8500000|2024-01-15|Completed|CONTRACT-2024-001
+Petrov|Petr|Ivanovich|2345 678901|+7 (999) 234-56-78|petrov@email.com|House|St. Petersburg, Nevsky Ave. 25|120.0|15000000|2024-02-20|Partial|CONTRACT-2024-002
+Sidorov|Sergey|Nikolaevich|3456 789012|+7 (999) 345-67-89|sidorov@email.com|Condo|Kazan, Bauman St. 5|85.0|9500000|2024-03-10|Pending|CONTRACT-2024-003
+Kuznetsov|Alexey|Vladimirovich|4567 890123|+7 (999) 456-78-90|kuznetsov@email.com|Townhouse|Ekaterinburg, Mira St. 15|95.0|11000000|2024-03-25|Completed|CONTRACT-2024-004
+Smirnov|Dmitry|Andreevich|5678 901234|+7 (999) 567-89-01|smirnov@email.com|Villa|Sochi, Primorskaya St. 30|200.0|25000000|2024-04-05|Partial|CONTRACT-2024-005 

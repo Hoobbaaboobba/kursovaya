@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+4708752c30b8b1e5eec38f48f1bb8e85 CMakeFiles/buyerdatabase_autogen
+cb159e7a53d4f0222a51ba48d6ed6741 buyerdatabase_autogen/timestamp
+7fbd447398f6d21240f9c58033abbae6 buyerdatabase_en.qm
+561b5ad45088d09a73d51cc9db8d45af buyerdatabase_ru.qm
