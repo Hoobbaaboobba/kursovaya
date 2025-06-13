@@ -1089,7 +1089,11 @@ CMakeFiles/buyerdatabase.dir/src/mainwindow.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMimeData \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QMouseEvent \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTabWidget \
   /Users/alexeymatveev/Desktop/kursovaya/src/views/../models/buyermodel.h \
+  /Users/alexeymatveev/Desktop/kursovaya/src/views/../models/searchhighlightproxy.h \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QColor \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMap \
   /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/include/ui_mainwindow.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVariant \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QAction \
@@ -1196,4 +1200,7 @@ CMakeFiles/buyerdatabase.dir/src/mainwindow.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCharts.framework/Headers/QValueAxis \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCharts.framework/Headers/qvalueaxis.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QInputDialog \
-  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qinputdialog.h
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qinputdialog.h \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QTextDocument \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QCoreApplication \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug

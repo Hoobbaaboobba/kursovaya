@@ -806,12 +806,14 @@
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/__stdarg_va_list.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/stdarg.h \
   /Users/alexeymatveev/Desktop/kursovaya/src/models/buyermodel.h \
+  /Users/alexeymatveev/Desktop/kursovaya/src/models/searchhighlightproxy.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QAbstractTableModel \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QFile \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QJsonArray \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QJsonDocument \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QJsonObject \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QList \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QMap \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QMimeData \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QObject \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/QRect \
@@ -977,6 +979,7 @@
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qversiontagging.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qxptype_traits.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/Headers/qyieldcpu.h \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/QColor \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/QContextMenuEvent \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/QDrag \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/QMouseEvent \
@@ -1021,6 +1024,7 @@
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Versions/A/Headers/qwindowdefs.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QHeaderView \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QMenu \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QTabWidget \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QTableView \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/QToolBar \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Versions/A/Headers/qabstractitemdelegate.h \

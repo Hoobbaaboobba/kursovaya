@@ -14,6 +14,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/buyerdatabase.dir/src/mainwindow.cpp.o.d"
   "CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.o"
   "CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.o.d"
+  "CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o"
+  "CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o.d"
   "CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o"
   "CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o.d"
   "CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o"

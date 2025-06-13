@@ -3,5 +3,6 @@
 #include "RGRURCYE3Z/moc_aboutdialog.cpp"
 #include "UVLADIE3JM/moc_mainwindow.cpp"
 #include "M4YTXQ7V2H/moc_buyermodel.cpp"
+#include "M4YTXQ7V2H/moc_searchhighlightproxy.cpp"
 #include "Z3L7HTGYLD/moc_buyerdialog.cpp"
 #include "Z3L7HTGYLD/moc_buyerview.cpp"

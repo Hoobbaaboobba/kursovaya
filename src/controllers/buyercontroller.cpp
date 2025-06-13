@@ -11,24 +11,25 @@ BuyerController::BuyerController(BuyerModel *model, QObject *parent)
 bool BuyerController::openFile(const QString &fileName)
 {
     if (!model->isValidFile(fileName)) {
-        emit error(tr("Неверный формат файла"));
+        emit error(tr("Invalid file format. File must start with 'BUYER_DATABASE'"));
         return false;
     }
 
     if (!model->loadFromFile(fileName)) {
-        emit error(tr("Не удалось открыть файл"));
+        emit error(tr("Failed to open file"));
         return false;
     }
 
     currentFileName = fileName;
     emit fileOpened(fileName);
+    emit dataChanged();
     return true;
 }
 
 bool BuyerController::saveFile(const QString &fileName)
 {
     if (!model->saveToFile(fileName)) {
-        emit error(tr("Не удалось сохранить файл"));
+        emit error(tr("Failed to save file"));
         return false;
     }
 

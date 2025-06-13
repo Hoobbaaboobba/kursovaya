@@ -50,8 +50,10 @@ public:
     Buyer getBuyer(int row) const;
     QVector<Buyer> getAllBuyers() const;
     bool isValidFile(const QString &fileName) const;
+    bool rowMatchesSearch(int row, const QString &searchText) const;
     QVector<Buyer> searchBuyers(const QString &searchText, int column) const;
     void sortByColumn(int column, Qt::SortOrder order);
+    void clear();
 
 private:
     QVector<Buyer> buyers;

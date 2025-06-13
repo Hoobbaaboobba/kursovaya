@@ -143,10 +143,24 @@ CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexeymatveev/Desktop/kursovaya/src/models/buyermodel.cpp -o CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.s
 
+CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o: CMakeFiles/buyerdatabase.dir/flags.make
+CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o: /Users/alexeymatveev/Desktop/kursovaya/src/models/searchhighlightproxy.cpp
+CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o: CMakeFiles/buyerdatabase.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o -MF CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o.d -o CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o -c /Users/alexeymatveev/Desktop/kursovaya/src/models/searchhighlightproxy.cpp
+
+CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/alexeymatveev/Desktop/kursovaya/src/models/searchhighlightproxy.cpp > CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.i
+
+CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/alexeymatveev/Desktop/kursovaya/src/models/searchhighlightproxy.cpp -o CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.s
+
 CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o: CMakeFiles/buyerdatabase.dir/flags.make
 CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o: /Users/alexeymatveev/Desktop/kursovaya/src/controllers/buyercontroller.cpp
 CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o: CMakeFiles/buyerdatabase.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o -MF CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o.d -o CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o -c /Users/alexeymatveev/Desktop/kursovaya/src/controllers/buyercontroller.cpp
 
 CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.i: cmake_force
@@ -160,7 +174,7 @@ CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.s: cmake_force
 CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o: CMakeFiles/buyerdatabase.dir/flags.make
 CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o: /Users/alexeymatveev/Desktop/kursovaya/src/views/buyerview.cpp
 CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o: CMakeFiles/buyerdatabase.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o -MF CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o.d -o CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o -c /Users/alexeymatveev/Desktop/kursovaya/src/views/buyerview.cpp
 
 CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.i: cmake_force
@@ -174,7 +188,7 @@ CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.s: cmake_force
 CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o: CMakeFiles/buyerdatabase.dir/flags.make
 CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o: /Users/alexeymatveev/Desktop/kursovaya/src/views/buyerdialog.cpp
 CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o: CMakeFiles/buyerdatabase.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o -MF CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o.d -o CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o -c /Users/alexeymatveev/Desktop/kursovaya/src/views/buyerdialog.cpp
 
 CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.i: cmake_force
@@ -188,7 +202,7 @@ CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.s: cmake_force
 CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o: CMakeFiles/buyerdatabase.dir/flags.make
 CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o: /Users/alexeymatveev/Desktop/kursovaya/src/dialogs/aboutdialog.cpp
 CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o: CMakeFiles/buyerdatabase.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o -MF CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o.d -o CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.o -c /Users/alexeymatveev/Desktop/kursovaya/src/dialogs/aboutdialog.cpp
 
 CMakeFiles/buyerdatabase.dir/src/dialogs/aboutdialog.cpp.i: cmake_force
@@ -205,6 +219,7 @@ buyerdatabase_OBJECTS = \
 "CMakeFiles/buyerdatabase.dir/src/main.cpp.o" \
 "CMakeFiles/buyerdatabase.dir/src/mainwindow.cpp.o" \
 "CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.o" \
+"CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o" \
 "CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o" \
 "CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o" \
 "CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o" \
@@ -217,6 +232,7 @@ buyerdatabase: CMakeFiles/buyerdatabase.dir/buyerdatabase_autogen/mocs_compilati
 buyerdatabase: CMakeFiles/buyerdatabase.dir/src/main.cpp.o
 buyerdatabase: CMakeFiles/buyerdatabase.dir/src/mainwindow.cpp.o
 buyerdatabase: CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.o
+buyerdatabase: CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o
 buyerdatabase: CMakeFiles/buyerdatabase.dir/src/controllers/buyercontroller.cpp.o
 buyerdatabase: CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o
 buyerdatabase: CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o
@@ -231,7 +247,7 @@ buyerdatabase: /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Versions/
 buyerdatabase: /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Versions/A/QtCore
 buyerdatabase: /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libcups.tbd
 buyerdatabase: CMakeFiles/buyerdatabase.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable buyerdatabase"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/alexeymatveev/Desktop/kursovaya/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable buyerdatabase"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/buyerdatabase.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

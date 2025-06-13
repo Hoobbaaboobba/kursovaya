@@ -39,46 +39,49 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "MainWindow",
-        "openFile",
+        "onOpen",
         "",
-        "saveFile",
+        "onSave",
         "saveFileAs",
         "addBuyer",
-        "editBuyer",
-        "deleteBuyer",
+        "onEditBuyer",
+        "onDeleteBuyer",
+        "onSearch",
+        "onPrint",
+        "onShowChart",
         "about",
         "changeLanguage",
-        "searchBuyers",
-        "printView",
-        "showChart",
+        "language",
         "updateWindowTitle"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'openFile'
+        // Slot 'onOpen'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'saveFile'
+        // Slot 'onSave'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'saveFileAs'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'addBuyer'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'editBuyer'
+        // Slot 'onEditBuyer'
         QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'deleteBuyer'
+        // Slot 'onDeleteBuyer'
         QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'about'
+        // Slot 'onSearch'
         QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'changeLanguage'
+        // Slot 'onPrint'
         QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'searchBuyers'
+        // Slot 'onShowChart'
         QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'printView'
+        // Slot 'about'
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'showChart'
-        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'changeLanguage'
+        QtMocHelpers::SlotData<void(const QString &)>(12, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 13 },
+        }}),
         // Slot 'updateWindowTitle'
-        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -102,22 +105,21 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<MainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->openFile(); break;
-        case 1: _t->saveFile(); break;
+        case 0: _t->onOpen(); break;
+        case 1: _t->onSave(); break;
         case 2: _t->saveFileAs(); break;
         case 3: _t->addBuyer(); break;
-        case 4: _t->editBuyer(); break;
-        case 5: _t->deleteBuyer(); break;
-        case 6: _t->about(); break;
-        case 7: _t->changeLanguage(); break;
-        case 8: _t->searchBuyers(); break;
-        case 9: _t->printView(); break;
-        case 10: _t->showChart(); break;
+        case 4: _t->onEditBuyer(); break;
+        case 5: _t->onDeleteBuyer(); break;
+        case 6: _t->onSearch(); break;
+        case 7: _t->onPrint(); break;
+        case 8: _t->onShowChart(); break;
+        case 9: _t->about(); break;
+        case 10: _t->changeLanguage((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 11: _t->updateWindowTitle(); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *MainWindow::metaObject() const

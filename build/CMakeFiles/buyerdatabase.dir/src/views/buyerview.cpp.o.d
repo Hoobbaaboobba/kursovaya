@@ -1028,6 +1028,7 @@ CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMimeData \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QMouseEvent \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTabWidget \
   /Users/alexeymatveev/Desktop/kursovaya/src/views/../models/buyermodel.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QAbstractTableModel \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QVector \
@@ -1082,6 +1083,9 @@ CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/quuid.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QJsonArray \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/qjsonarray.h \
+  /Users/alexeymatveev/Desktop/kursovaya/src/views/../models/searchhighlightproxy.h \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QColor \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMap \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -1174,4 +1178,9 @@ CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/qrawfont.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/qfontdatabase.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QApplication \
-  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qapplication.h
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QFileInfo \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QKeySequence \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QItemSelectionModel \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QItemSelection

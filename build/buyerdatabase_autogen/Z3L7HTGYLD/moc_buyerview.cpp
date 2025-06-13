@@ -59,17 +59,25 @@ template <> constexpr inline auto BuyerView::qt_create_metaobjectdata<qt_meta_ta
         "QList<int>",
         "sourceRows",
         "targetRow",
+        "fileSwitched",
+        "onSortOrderChanged",
+        "onSearch",
+        "onSearchTextChanged",
+        "text",
+        "onDeleteBuyer",
         "onHeaderClicked",
         "onCustomContextMenu",
         "point",
         "onAddBuyer",
         "onEditBuyer",
-        "onDeleteBuyer",
-        "onSearch",
         "onPrint",
         "onShowChart",
         "onSave",
-        "onOpen"
+        "onOpen",
+        "onTabChanged",
+        "index",
+        "onSortIndicatorChanged",
+        "logicalIndex"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -105,30 +113,50 @@ template <> constexpr inline auto BuyerView::qt_create_metaobjectdata<qt_meta_ta
         QtMocHelpers::SignalData<void(const QVector<int> &, int)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 17, 18 }, { QMetaType::Int, 19 },
         }}),
+        // Signal 'fileSwitched'
+        QtMocHelpers::SignalData<void(const QString &)>(20, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 15 },
+        }}),
+        // Slot 'onSortOrderChanged'
+        QtMocHelpers::SlotData<void(int, Qt::SortOrder)>(21, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 7 }, { 0x80000000 | 9, 10 },
+        }}),
+        // Slot 'onSearch'
+        QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onSearchTextChanged'
+        QtMocHelpers::SlotData<void(const QString &)>(23, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 24 },
+        }}),
+        // Slot 'onDeleteBuyer'
+        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'onHeaderClicked'
-        QtMocHelpers::SlotData<void(int)>(20, 2, QMC::AccessPrivate, QMetaType::Void, {{
+        QtMocHelpers::SlotData<void(int)>(26, 2, QMC::AccessPrivate, QMetaType::Void, {{
             { QMetaType::Int, 7 },
         }}),
         // Slot 'onCustomContextMenu'
-        QtMocHelpers::SlotData<void(const QPoint &)>(21, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QPoint, 22 },
+        QtMocHelpers::SlotData<void(const QPoint &)>(27, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QPoint, 28 },
         }}),
         // Slot 'onAddBuyer'
-        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onEditBuyer'
-        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onDeleteBuyer'
-        QtMocHelpers::SlotData<void()>(25, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSearch'
-        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onPrint'
-        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onShowChart'
-        QtMocHelpers::SlotData<void()>(28, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onSave'
         QtMocHelpers::SlotData<void()>(29, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'onOpen'
+        // Slot 'onEditBuyer'
         QtMocHelpers::SlotData<void()>(30, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onPrint'
+        QtMocHelpers::SlotData<void()>(31, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onShowChart'
+        QtMocHelpers::SlotData<void()>(32, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onSave'
+        QtMocHelpers::SlotData<void()>(33, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onOpen'
+        QtMocHelpers::SlotData<void()>(34, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onTabChanged'
+        QtMocHelpers::SlotData<void(int)>(35, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 36 },
+        }}),
+        // Slot 'onSortIndicatorChanged'
+        QtMocHelpers::SlotData<void(int, Qt::SortOrder)>(37, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 38 }, { 0x80000000 | 9, 10 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -138,7 +166,7 @@ template <> constexpr inline auto BuyerView::qt_create_metaobjectdata<qt_meta_ta
             qt_methods, qt_properties, qt_enums);
 }
 Q_CONSTINIT const QMetaObject BuyerView::staticMetaObject = { {
-    QMetaObject::SuperData::link<QTableView::staticMetaObject>(),
+    QMetaObject::SuperData::link<QTabWidget::staticMetaObject>(),
     qt_staticMetaObjectStaticContent<qt_meta_tag_ZN9BuyerViewE_t>.stringdata,
     qt_staticMetaObjectStaticContent<qt_meta_tag_ZN9BuyerViewE_t>.data,
     qt_static_metacall,
@@ -162,16 +190,21 @@ void BuyerView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 7: _t->saveRequested(); break;
         case 8: _t->openRequested((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 9: _t->rowsMoved((*reinterpret_cast< std::add_pointer_t<QList<int>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 10: _t->onHeaderClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 11: _t->onCustomContextMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
-        case 12: _t->onAddBuyer(); break;
-        case 13: _t->onEditBuyer(); break;
+        case 10: _t->fileSwitched((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 11: _t->onSortOrderChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Qt::SortOrder>>(_a[2]))); break;
+        case 12: _t->onSearch(); break;
+        case 13: _t->onSearchTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 14: _t->onDeleteBuyer(); break;
-        case 15: _t->onSearch(); break;
-        case 16: _t->onPrint(); break;
-        case 17: _t->onShowChart(); break;
-        case 18: _t->onSave(); break;
-        case 19: _t->onOpen(); break;
+        case 15: _t->onHeaderClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 16: _t->onCustomContextMenu((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 17: _t->onAddBuyer(); break;
+        case 18: _t->onEditBuyer(); break;
+        case 19: _t->onPrint(); break;
+        case 20: _t->onShowChart(); break;
+        case 21: _t->onSave(); break;
+        case 22: _t->onOpen(); break;
+        case 23: _t->onTabChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 24: _t->onSortIndicatorChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Qt::SortOrder>>(_a[2]))); break;
         default: ;
         }
     }
@@ -208,6 +241,8 @@ void BuyerView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             return;
         if (QtMocHelpers::indexOfMethod<void (BuyerView::*)(const QVector<int> & , int )>(_a, &BuyerView::rowsMoved, 9))
             return;
+        if (QtMocHelpers::indexOfMethod<void (BuyerView::*)(const QString & )>(_a, &BuyerView::fileSwitched, 10))
+            return;
     }
 }
 
@@ -221,23 +256,23 @@ void *BuyerView::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN9BuyerViewE_t>.strings))
         return static_cast<void*>(this);
-    return QTableView::qt_metacast(_clname);
+    return QTabWidget::qt_metacast(_clname);
 }
 
 int BuyerView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QTableView::qt_metacall(_c, _id, _a);
+    _id = QTabWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 20)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 25;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 20)
+        if (_id < 25)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 20;
+        _id -= 25;
     }
     return _id;
 }
@@ -300,5 +335,11 @@ void BuyerView::openRequested(const QString & _t1)
 void BuyerView::rowsMoved(const QVector<int> & _t1, int _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 9, nullptr, _t1, _t2);
+}
+
+// SIGNAL 10
+void BuyerView::fileSwitched(const QString & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 10, nullptr, _t1);
 }
 QT_WARNING_POP

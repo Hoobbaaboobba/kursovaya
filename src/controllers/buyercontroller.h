@@ -44,6 +44,7 @@ signals:
     void buyerDeleted(int row);
     void searchResultsUpdated(const QVector<Buyer> &results);
     void sortOrderChanged(int column, Qt::SortOrder order);
+    void dataChanged();
 
 private:
     BuyerModel *model;

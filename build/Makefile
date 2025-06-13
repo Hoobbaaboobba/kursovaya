@@ -344,6 +344,30 @@ src/models/buyermodel.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/buyerdatabase.dir/build.make CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.s
 .PHONY : src/models/buyermodel.cpp.s
 
+src/models/searchhighlightproxy.o: src/models/searchhighlightproxy.cpp.o
+.PHONY : src/models/searchhighlightproxy.o
+
+# target to build an object file
+src/models/searchhighlightproxy.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/buyerdatabase.dir/build.make CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o
+.PHONY : src/models/searchhighlightproxy.cpp.o
+
+src/models/searchhighlightproxy.i: src/models/searchhighlightproxy.cpp.i
+.PHONY : src/models/searchhighlightproxy.i
+
+# target to preprocess a source file
+src/models/searchhighlightproxy.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/buyerdatabase.dir/build.make CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.i
+.PHONY : src/models/searchhighlightproxy.cpp.i
+
+src/models/searchhighlightproxy.s: src/models/searchhighlightproxy.cpp.s
+.PHONY : src/models/searchhighlightproxy.s
+
+# target to generate assembly for a file
+src/models/searchhighlightproxy.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/buyerdatabase.dir/build.make CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.s
+.PHONY : src/models/searchhighlightproxy.cpp.s
+
 src/views/buyerdialog.o: src/views/buyerdialog.cpp.o
 .PHONY : src/views/buyerdialog.o
 
@@ -425,6 +449,9 @@ help:
 	@echo "... src/models/buyermodel.o"
 	@echo "... src/models/buyermodel.i"
 	@echo "... src/models/buyermodel.s"
+	@echo "... src/models/searchhighlightproxy.o"
+	@echo "... src/models/searchhighlightproxy.i"
+	@echo "... src/models/searchhighlightproxy.s"
 	@echo "... src/views/buyerdialog.o"
 	@echo "... src/views/buyerdialog.i"
 	@echo "... src/views/buyerdialog.s"

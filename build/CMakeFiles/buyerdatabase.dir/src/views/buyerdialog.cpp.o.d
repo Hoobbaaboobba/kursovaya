@@ -1016,4 +1016,5 @@ CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlabel.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/qpicture.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/qiodevice.h \
-  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QRegularExpressionValidator
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QRegularExpressionValidator \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QDebug

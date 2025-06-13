@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/alexeymatveev/Desktop/kursovaya/src/main.cpp" "CMakeFiles/buyerdatabase.dir/src/main.cpp.o" "gcc" "CMakeFiles/buyerdatabase.dir/src/main.cpp.o.d"
   "/Users/alexeymatveev/Desktop/kursovaya/src/mainwindow.cpp" "CMakeFiles/buyerdatabase.dir/src/mainwindow.cpp.o" "gcc" "CMakeFiles/buyerdatabase.dir/src/mainwindow.cpp.o.d"
   "/Users/alexeymatveev/Desktop/kursovaya/src/models/buyermodel.cpp" "CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.o" "gcc" "CMakeFiles/buyerdatabase.dir/src/models/buyermodel.cpp.o.d"
+  "/Users/alexeymatveev/Desktop/kursovaya/src/models/searchhighlightproxy.cpp" "CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o" "gcc" "CMakeFiles/buyerdatabase.dir/src/models/searchhighlightproxy.cpp.o.d"
   "/Users/alexeymatveev/Desktop/kursovaya/src/views/buyerdialog.cpp" "CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o" "gcc" "CMakeFiles/buyerdatabase.dir/src/views/buyerdialog.cpp.o.d"
   "/Users/alexeymatveev/Desktop/kursovaya/src/views/buyerview.cpp" "CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o" "gcc" "CMakeFiles/buyerdatabase.dir/src/views/buyerview.cpp.o.d"
   )

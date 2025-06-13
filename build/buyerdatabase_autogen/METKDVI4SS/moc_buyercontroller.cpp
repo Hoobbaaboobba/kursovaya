@@ -56,7 +56,8 @@ template <> constexpr inline auto BuyerController::qt_create_metaobjectdata<qt_m
         "sortOrderChanged",
         "column",
         "Qt::SortOrder",
-        "order"
+        "order",
+        "dataChanged"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -92,6 +93,8 @@ template <> constexpr inline auto BuyerController::qt_create_metaobjectdata<qt_m
         QtMocHelpers::SignalData<void(int, Qt::SortOrder)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 15 }, { 0x80000000 | 16, 17 },
         }}),
+        // Signal 'dataChanged'
+        QtMocHelpers::SignalData<void()>(18, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -123,6 +126,7 @@ void BuyerController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 5: _t->buyerDeleted((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 6: _t->searchResultsUpdated((*reinterpret_cast< std::add_pointer_t<QList<Buyer>>>(_a[1]))); break;
         case 7: _t->sortOrderChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<Qt::SortOrder>>(_a[2]))); break;
+        case 8: _t->dataChanged(); break;
         default: ;
         }
     }
@@ -142,6 +146,8 @@ void BuyerController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         if (QtMocHelpers::indexOfMethod<void (BuyerController::*)(const QVector<Buyer> & )>(_a, &BuyerController::searchResultsUpdated, 6))
             return;
         if (QtMocHelpers::indexOfMethod<void (BuyerController::*)(int , Qt::SortOrder )>(_a, &BuyerController::sortOrderChanged, 7))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (BuyerController::*)()>(_a, &BuyerController::dataChanged, 8))
             return;
     }
 }
@@ -165,14 +171,14 @@ int BuyerController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }
@@ -223,5 +229,11 @@ void BuyerController::searchResultsUpdated(const QVector<Buyer> & _t1)
 void BuyerController::sortOrderChanged(int _t1, Qt::SortOrder _t2)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 7, nullptr, _t1, _t2);
+}
+
+// SIGNAL 8
+void BuyerController::dataChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 8, nullptr);
 }
 QT_WARNING_POP

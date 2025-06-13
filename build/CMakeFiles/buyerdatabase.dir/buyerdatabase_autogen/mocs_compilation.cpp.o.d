@@ -1116,9 +1116,15 @@ CMakeFiles/buyerdatabase.dir/buyerdatabase_autogen/mocs_compilation.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMimeData \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QMouseEvent \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTabWidget \
   /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/UVLADIE3JM/../../../src/views/../models/buyermodel.h \
+  /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/UVLADIE3JM/../../../src/views/../models/searchhighlightproxy.h \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QColor \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMap \
   /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/M4YTXQ7V2H/moc_buyermodel.cpp \
   /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/M4YTXQ7V2H/../../../src/models/buyermodel.h \
+  /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/M4YTXQ7V2H/moc_searchhighlightproxy.cpp \
+  /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/M4YTXQ7V2H/../../../src/models/searchhighlightproxy.h \
   /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/Z3L7HTGYLD/moc_buyerdialog.cpp \
   /Users/alexeymatveev/Desktop/kursovaya/build/buyerdatabase_autogen/Z3L7HTGYLD/../../../src/views/buyerdialog.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \

@@ -23,17 +23,17 @@ protected:
     void closeEvent(QCloseEvent *event) override;
 
 private slots:
-    void openFile();
-    void saveFile();
+    void onOpen();
+    void onSave();
     void saveFileAs();
     void addBuyer();
-    void editBuyer();
-    void deleteBuyer();
+    void onEditBuyer();
+    void onDeleteBuyer();
+    void onSearch();
+    void onPrint();
+    void onShowChart();
     void about();
-    void changeLanguage();
-    void searchBuyers();
-    void printView();
-    void showChart();
+    void changeLanguage(const QString &language);
     void updateWindowTitle();
 
 private:
@@ -42,18 +42,23 @@ private:
     void createToolBars();
     void createStatusBar();
     void createDockWindows();
-    void loadSettings();
-    void saveSettings();
     void setupConnections();
     void setupContextMenu();
     void setupDragAndDrop();
+    void loadSettings();
+    void saveSettings();
+    void saveFile();
+
+    // Helper methods for tab management
+    BuyerModel* currentTabModel() const;
+    QSortFilterProxyModel* currentTabProxy() const;
 
     Ui::MainWindow *ui;
     BuyerModel *model;
     BuyerController *controller;
     BuyerView *view;
-    QTranslator translator;
     QString currentFile;
+    QTranslator translator;
 };
 
 #endif // MAINWINDOW_H 

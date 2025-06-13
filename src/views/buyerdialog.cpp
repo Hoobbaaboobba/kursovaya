@@ -2,6 +2,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QRegularExpressionValidator>
+#include <QDebug>
 
 BuyerDialog::BuyerDialog(QWidget *parent)
     : QDialog(parent)
@@ -65,7 +66,7 @@ BuyerDialog::BuyerDialog(QWidget *parent)
     propertyPriceSpinBox->setSingleStep(1000);
 
     // Setup payment status combo
-    paymentStatusCombo->addItems({"В ожидании", "Частичная", "Завершена"});
+    paymentStatusCombo->addItems({"Pending", "Partial", "Completed"});
 
     // Add fields to form layout
     formLayout->addRow(tr("Фамилия:"), lastNameEdit);
@@ -185,27 +186,41 @@ void BuyerDialog::getBuyerData(QString &lastName, QString &firstName, QString &m
                              double &propertyPrice, QDate &purchaseDate, QString &paymentStatus,
                              QString &contractNumber) const
 {
+    // Get all values and trim them
     lastName = lastNameEdit->text().trimmed();
     firstName = firstNameEdit->text().trimmed();
     middleName = middleNameEdit->text().trimmed();
     passportNumber = passportNumberEdit->text().trimmed();
     phoneNumber = phoneNumberEdit->text().trimmed();
     email = emailEdit->text().trimmed();
-    propertyType = propertyTypeCombo->currentText();
+    propertyType = propertyTypeCombo->currentText().trimmed();
     propertyAddress = propertyAddressEdit->text().trimmed();
+    
+    // Get numeric values with correct formatting
     propertyArea = propertyAreaSpinBox->value();
     propertyPrice = propertyPriceSpinBox->value();
+    
+    // Format date
     purchaseDate = purchaseDateEdit->date();
-    paymentStatus = paymentStatusCombo->currentText();
+    
+    // Get payment status and ensure it's in English
+    paymentStatus = paymentStatusCombo->currentText().trimmed();
+    if (paymentStatus == "Частичная") {
+        paymentStatus = "Partial";
+    } else if (paymentStatus == "В ожидании") {
+        paymentStatus = "Pending";
+    } else if (paymentStatus == "Завершена") {
+        paymentStatus = "Completed";
+    }
+    
     contractNumber = contractNumberEdit->text().trimmed();
 
-    // Format the date to match the required format (YYYY-MM-DD)
-    QString formattedDate = purchaseDate.toString("yyyy-MM-dd");
-    purchaseDate = QDate::fromString(formattedDate, "yyyy-MM-dd");
-
-    // Format the area and price as strings with 2 decimal places
-    QString areaStr = QString::number(propertyArea, 'f', 2);
-    QString priceStr = QString::number(propertyPrice, 'f', 2);
-    propertyArea = areaStr.toDouble();
-    propertyPrice = priceStr.toDouble();
+    // Debug output to verify the data
+    qDebug() << "Dialog data:";
+    qDebug() << "Name:" << lastName << firstName << middleName;
+    qDebug() << "Contact:" << passportNumber << phoneNumber << email;
+    qDebug() << "Property:" << propertyType << propertyAddress;
+    qDebug() << "Area:" << propertyArea << "Price:" << propertyPrice;
+    qDebug() << "Date:" << purchaseDate.toString("yyyy-MM-dd");
+    qDebug() << "Status:" << paymentStatus << "Contract:" << contractNumber;
 } 

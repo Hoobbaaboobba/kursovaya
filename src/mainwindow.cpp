@@ -18,6 +18,11 @@
 #include <QBarCategoryAxis>
 #include <QValueAxis>
 #include <QInputDialog>
+#include <QTextDocument>
+#include <QTextStream>
+#include <QFile>
+#include <QCoreApplication>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,7 +33,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setCentralWidget(view);
-    view->setModel(model);
 
     createActions();
     createMenus();
@@ -40,6 +44,12 @@ MainWindow::MainWindow(QWidget *parent)
     setupDragAndDrop();
 
     loadSettings();
+    
+    // Load saved language preference
+    QSettings settings;
+    QString savedLanguage = settings.value("language", "en").toString();
+    changeLanguage(savedLanguage);
+    
     updateWindowTitle();
 }
 
@@ -53,10 +63,10 @@ void MainWindow::createActions()
 {
     // File actions
     ui->actionOpen->setShortcut(QKeySequence::Open);
-    connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::openFile);
+    connect(ui->actionOpen, &QAction::triggered, this, &MainWindow::onOpen);
 
     ui->actionSave->setShortcut(QKeySequence::Save);
-    connect(ui->actionSave, &QAction::triggered, this, &MainWindow::saveFile);
+    connect(ui->actionSave, &QAction::triggered, this, &MainWindow::onSave);
 
     ui->actionSaveAs->setShortcut(QKeySequence::SaveAs);
     connect(ui->actionSaveAs, &QAction::triggered, this, &MainWindow::saveFileAs);
@@ -69,19 +79,19 @@ void MainWindow::createActions()
     connect(ui->actionAddBuyer, &QAction::triggered, this, &MainWindow::addBuyer);
 
     ui->actionEditBuyer->setShortcut(QKeySequence("Ctrl+E"));
-    connect(ui->actionEditBuyer, &QAction::triggered, this, &MainWindow::editBuyer);
+    connect(ui->actionEditBuyer, &QAction::triggered, this, &MainWindow::onEditBuyer);
 
     ui->actionDeleteBuyer->setShortcut(QKeySequence::Delete);
-    connect(ui->actionDeleteBuyer, &QAction::triggered, this, &MainWindow::deleteBuyer);
+    connect(ui->actionDeleteBuyer, &QAction::triggered, this, &MainWindow::onDeleteBuyer);
 
     // View actions
-    connect(ui->actionSearch, &QAction::triggered, this, &MainWindow::searchBuyers);
-    connect(ui->actionPrint, &QAction::triggered, this, &MainWindow::printView);
-    connect(ui->actionShowChart, &QAction::triggered, this, &MainWindow::showChart);
+    connect(ui->actionSearch, &QAction::triggered, this, &MainWindow::onSearch);
+    connect(ui->actionPrint, &QAction::triggered, this, &MainWindow::onPrint);
+    connect(ui->actionShowChart, &QAction::triggered, this, &MainWindow::onShowChart);
 
     // Language actions
-    connect(ui->actionEnglish, &QAction::triggered, [this]() { changeLanguage(); });
-    connect(ui->actionRussian, &QAction::triggered, [this]() { changeLanguage(); });
+    connect(ui->actionEnglish, &QAction::triggered, [this]() { changeLanguage("en"); });
+    connect(ui->actionRussian, &QAction::triggered, [this]() { changeLanguage("ru"); });
 
     // Help actions
     connect(ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
@@ -146,16 +156,31 @@ void MainWindow::createDockWindows()
 void MainWindow::setupConnections()
 {
     connect(view, &BuyerView::addBuyerRequested, this, &MainWindow::addBuyer);
-    connect(view, &BuyerView::editBuyerRequested, this, &MainWindow::editBuyer);
-    connect(view, &BuyerView::deleteBuyerRequested, this, &MainWindow::deleteBuyer);
-    connect(view, &BuyerView::searchRequested, this, &MainWindow::searchBuyers);
-    connect(view, &BuyerView::printRequested, this, &MainWindow::printView);
-    connect(view, &BuyerView::showChartRequested, this, &MainWindow::showChart);
+    connect(view, &BuyerView::editBuyerRequested, this, &MainWindow::onEditBuyer);
+    connect(view, &BuyerView::deleteBuyerRequested, this, &MainWindow::onDeleteBuyer);
+    connect(view, &BuyerView::searchRequested, this, &MainWindow::onSearch);
+    connect(view, &BuyerView::printRequested, this, &MainWindow::onPrint);
+    connect(view, &BuyerView::showChartRequested, this, &MainWindow::onShowChart);
+    connect(view, &BuyerView::sortRequested, controller, &BuyerController::sortByColumn);
 
     connect(controller, &BuyerController::fileOpened, this, &MainWindow::updateWindowTitle);
     connect(controller, &BuyerController::fileSaved, this, &MainWindow::updateWindowTitle);
     connect(controller, &BuyerController::error, this, [this](const QString &message) {
         QMessageBox::warning(this, tr("Ошибка"), message);
+    });
+    connect(controller, &BuyerController::sortOrderChanged, view, &BuyerView::onSortOrderChanged);
+
+    connect(model, &BuyerModel::dataChanged, this, [this]() {
+        updateWindowTitle();
+        if (view->currentView()) {
+            view->currentView()->viewport()->update();
+        }
+    });
+    connect(model, &BuyerModel::modelReset, this, [this]() {
+        updateWindowTitle();
+        if (view->currentView()) {
+            view->currentView()->viewport()->update();
+        }
     });
 }
 
@@ -185,20 +210,23 @@ void MainWindow::saveSettings()
     settings.setValue("currentFile", currentFile);
 }
 
-void MainWindow::openFile()
+void MainWindow::onOpen()
 {
-    QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Открыть файл"), QString(),
+    QStringList fileNames = QFileDialog::getOpenFileNames(this,
+        tr("Открыть файлы"), "",
         tr("Текстовые файлы (*.txt);;Все файлы (*)"));
 
+    for (const QString &fileName : fileNames) {
     if (!fileName.isEmpty()) {
         if (controller->openFile(fileName)) {
+                view->addFile(fileName);
             currentFile = fileName;
             updateWindowTitle();
-            statusBar()->showMessage(tr("Файл загружен"), 2000);
+                statusBar()->showMessage(tr("Файл загружен"), 2000);
         } else {
-            QMessageBox::warning(this, tr("Ошибка"),
-                tr("Не удалось открыть файл %1").arg(fileName));
+                QMessageBox::warning(this, tr("Ошибка"),
+                    tr("Не удалось открыть файл %1").arg(fileName));
+            }
         }
     }
 }
@@ -235,6 +263,20 @@ void MainWindow::saveFileAs()
     }
 }
 
+// Helper to get the current tab's BuyerModel
+BuyerModel* MainWindow::currentTabModel() const {
+    if (!view->currentView()) return nullptr;
+    QString file = view->getCurrentFile();
+    return view->getModel(file);
+}
+
+// Helper to get the current tab's proxy
+QSortFilterProxyModel* MainWindow::currentTabProxy() const {
+    if (!view->currentView()) return nullptr;
+    QString file = view->getCurrentFile();
+    return view->getProxy(file);
+}
+
 void MainWindow::addBuyer()
 {
     BuyerDialog dialog(this);
@@ -267,7 +309,8 @@ void MainWindow::addBuyer()
         buyer.paymentStatus = paymentStatus;
         buyer.contractNumber = contractNumber;
 
-        if (controller->addBuyer(buyer)) {
+        BuyerModel* tabModel = currentTabModel();
+        if (tabModel && tabModel->addBuyer(buyer)) {
             statusBar()->showMessage(tr("Покупатель добавлен"), 2000);
         } else {
             QMessageBox::warning(this, tr("Ошибка"), tr("Не удалось добавить покупателя"));
@@ -275,95 +318,55 @@ void MainWindow::addBuyer()
     }
 }
 
-void MainWindow::editBuyer()
+void MainWindow::onEditBuyer()
 {
-    QModelIndexList indexes = view->selectionModel()->selectedRows();
-    if (indexes.isEmpty()) {
-        QMessageBox::warning(this, tr("Предупреждение"),
-            tr("Пожалуйста, выберите покупателя для редактирования"));
-        return;
-    }
-
+    BuyerModel* tabModel = currentTabModel();
+    if (!tabModel) return;
+    QModelIndexList indexes = view->getSelectedRows();
+    if (!indexes.isEmpty()) {
     int row = indexes.first().row();
-    QString lastName, firstName, middleName;
-    QString passportNumber, phoneNumber, email;
-    QString propertyType, propertyAddress;
-    double propertyArea, propertyPrice;
-    QDate purchaseDate;
-    QString paymentStatus, contractNumber;
-
-    Buyer buyer = controller->getBuyer(row);
-    lastName = buyer.lastName;
-    firstName = buyer.firstName;
-    middleName = buyer.middleName;
-    passportNumber = buyer.passportNumber;
-    phoneNumber = buyer.phoneNumber;
-    email = buyer.email;
-    propertyType = buyer.propertyType;
-    propertyAddress = buyer.propertyAddress;
-    propertyArea = buyer.propertyArea.toDouble();
-    propertyPrice = buyer.propertyPrice.toDouble();
-    purchaseDate = QDate::fromString(buyer.purchaseDate, "yyyy-MM-dd");
-    paymentStatus = buyer.paymentStatus;
-    contractNumber = buyer.contractNumber;
+        Buyer buyer = tabModel->getBuyer(row);
 
     BuyerDialog dialog(this);
-    dialog.setBuyerData(lastName, firstName, middleName,
-                      passportNumber, phoneNumber, email,
-                      propertyType, propertyAddress, propertyArea,
-                      propertyPrice, purchaseDate, paymentStatus,
-                      contractNumber);
+        
+        // Create temporary variables for double values and date
+        double propertyArea = buyer.propertyArea.toDouble();
+        double propertyPrice = buyer.propertyPrice.toDouble();
+        QDate purchaseDate = QDate::fromString(buyer.purchaseDate, "yyyy-MM-dd");
+        
+        dialog.setBuyerData(buyer.lastName, buyer.firstName, buyer.middleName,
+                          buyer.passportNumber, buyer.phoneNumber, buyer.email,
+                          buyer.propertyType, buyer.propertyAddress, 
+                          propertyArea, propertyPrice,
+                          purchaseDate,
+                          buyer.paymentStatus, buyer.contractNumber);
 
     if (dialog.exec() == QDialog::Accepted) {
-        dialog.getBuyerData(lastName, firstName, middleName,
-                          passportNumber, phoneNumber, email,
-                          propertyType, propertyAddress, propertyArea,
-                          propertyPrice, purchaseDate, paymentStatus,
-                          contractNumber);
+            dialog.getBuyerData(buyer.lastName, buyer.firstName, buyer.middleName,
+                              buyer.passportNumber, buyer.phoneNumber, buyer.email,
+                              buyer.propertyType, buyer.propertyAddress,
+                              propertyArea, propertyPrice,
+                              purchaseDate,
+                              buyer.paymentStatus, buyer.contractNumber);
+            
+            // Convert values back to strings
+            buyer.propertyArea = QString::number(propertyArea);
+            buyer.propertyPrice = QString::number(propertyPrice);
+            buyer.purchaseDate = purchaseDate.toString("yyyy-MM-dd");
 
-        Buyer updatedBuyer;
-        updatedBuyer.lastName = lastName;
-        updatedBuyer.firstName = firstName;
-        updatedBuyer.middleName = middleName;
-        updatedBuyer.passportNumber = passportNumber;
-        updatedBuyer.phoneNumber = phoneNumber;
-        updatedBuyer.email = email;
-        updatedBuyer.propertyType = propertyType;
-        updatedBuyer.propertyAddress = propertyAddress;
-        updatedBuyer.propertyArea = QString::number(propertyArea);
-        updatedBuyer.propertyPrice = QString::number(propertyPrice);
-        updatedBuyer.purchaseDate = purchaseDate.toString("yyyy-MM-dd");
-        updatedBuyer.paymentStatus = paymentStatus;
-        updatedBuyer.contractNumber = contractNumber;
-
-        if (controller->updateBuyer(row, updatedBuyer)) {
-            statusBar()->showMessage(tr("Покупатель обновлен"), 2000);
+            if (tabModel->updateBuyer(row, buyer)) {
+                statusBar()->showMessage(tr("Покупатель обновлен"), 2000);
         } else {
-            QMessageBox::warning(this, tr("Ошибка"), tr("Не удалось обновить покупателя"));
+                QMessageBox::warning(this, tr("Ошибка"), tr("Не удалось обновить данные покупателя"));
+            }
         }
     }
 }
 
-void MainWindow::deleteBuyer()
+void MainWindow::onDeleteBuyer()
 {
-    QModelIndexList indexes = view->selectionModel()->selectedRows();
-    if (indexes.isEmpty()) {
-        QMessageBox::warning(this, tr("Предупреждение"),
-            tr("Пожалуйста, выберите покупателя для удаления"));
-        return;
-    }
-
-    int row = indexes.first().row();
-    if (QMessageBox::question(this, tr("Подтверждение удаления"),
-        tr("Вы уверены, что хотите удалить этого покупателя?"),
-        QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
-        if (controller->deleteBuyer(row)) {
-            statusBar()->showMessage(tr("Покупатель удален"), 2000);
-        } else {
-            QMessageBox::warning(this, tr("Ошибка"),
-                tr("Не удалось удалить покупателя"));
-        }
-    }
+    // Let BuyerView handle the confirmation dialog and deletion
+    view->onDeleteBuyer();
 }
 
 void MainWindow::about()
@@ -372,113 +375,172 @@ void MainWindow::about()
     dialog.exec();
 }
 
-void MainWindow::changeLanguage()
+void MainWindow::changeLanguage(const QString &language)
 {
-    QAction *action = qobject_cast<QAction *>(sender());
-    if (action) {
-        QString language = action->text().toLower();
-        if (translator.load(QString(":/translations/buyerdatabase_%1").arg(language))) {
+    // Remove old translator
+    qApp->removeTranslator(&translator);
+
+    // Load new translation
+    QString translationPath = QCoreApplication::applicationDirPath() + "/translations/buyerdatabase_" + language + ".ts";
+    qDebug() << "Loading translation from:" << translationPath;
+    
+    if (translator.load(translationPath)) {
             qApp->installTranslator(&translator);
+        
+        // Update UI
             ui->retranslateUi(this);
+        
+        // Update window title
+        updateWindowTitle();
+        
+        // Update status bar
+        statusBar()->showMessage(tr("Ready"));
+        
+        // Update view
+        if (view) {
+            view->retranslateUi();
         }
+        
+        // Save language preference
+        QSettings settings;
+        settings.setValue("language", language);
+        
+        // Force update of all widgets
+        QEvent languageChangeEvent(QEvent::LanguageChange);
+        QApplication::sendEvent(this, &languageChangeEvent);
+        QApplication::sendEvent(view, &languageChangeEvent);
+    } else {
+        qWarning() << "Failed to load translation for language:" << language << "from path:" << translationPath;
     }
 }
 
-void MainWindow::searchBuyers()
+void MainWindow::onSearch()
 {
+    QSortFilterProxyModel* proxy = currentTabProxy();
+    BuyerModel* tabModel = currentTabModel();
+    if (!proxy || !tabModel) return;
     bool ok;
     QString searchText = QInputDialog::getText(this, tr("Поиск"),
-        tr("Введите текст поиска:"), QLineEdit::Normal,
+                                             tr("Введите текст поиска:"), QLineEdit::Normal,
         QString(), &ok);
-
     if (ok && !searchText.isEmpty()) {
-        int column = view->currentIndex().column();
+        int column = view->getCurrentSortColumn();
         if (column == -1) {
             QStringList columns;
-            for (int i = 0; i < model->columnCount(); ++i) {
-                columns << model->headerData(i, Qt::Horizontal).toString();
+            for (int i = 0; i < tabModel->columnCount(); ++i) {
+                columns << tabModel->headerData(i, Qt::Horizontal).toString();
             }
             column = QInputDialog::getItem(this, tr("Выберите столбец"),
-                tr("Поиск в столбце:"), columns, 0, false, &ok).toInt();
+                                         tr("Поиск в столбце:"), columns, 0, false, &ok).toInt();
         }
-
         if (ok) {
-            QVector<Buyer> results = controller->searchBuyers(searchText, column);
-            if (!results.isEmpty()) {
-                // Найдите строку первого результата в модели
-                for (int i = 0; i < model->rowCount(); ++i) {
-                    if (model->getBuyer(i).passportNumber == results.first().passportNumber) {
-                        view->selectRow(i);
-                        break;
-                    }
-                }
-                statusBar()->showMessage(tr("Найдено %1 совпадений").arg(results.size()), 2000);
-            } else {
-                statusBar()->showMessage(tr("Совпадений не найдено"), 2000);
-            }
+            proxy->setFilterKeyColumn(column);
+            proxy->setFilterFixedString(searchText);
         }
     }
 }
 
-void MainWindow::printView()
+void MainWindow::onPrint()
 {
-    QPrinter printer(QPrinter::HighResolution);
+    BuyerModel* tabModel = currentTabModel();
+    if (!tabModel) return;
+    QPrinter printer;
     QPrintDialog dialog(&printer, this);
     if (dialog.exec() == QDialog::Accepted) {
         QPainter painter(&printer);
-        view->render(&painter);
+        QTextDocument document;
+        QString html = "<table border='1'>";
+        html += "<tr>";
+        for (int i = 0; i < tabModel->columnCount(); ++i) {
+            html += "<th>" + tabModel->headerData(i, Qt::Horizontal).toString() + "</th>";
+        }
+        html += "</tr>";
+        for (int row = 0; row < tabModel->rowCount(); ++row) {
+            html += "<tr>";
+            for (int col = 0; col < tabModel->columnCount(); ++col) {
+                QModelIndex index = tabModel->index(row, col);
+                html += "<td>" + index.data().toString() + "</td>";
+            }
+            html += "</tr>";
+        }
+        html += "</table>";
+        document.setHtml(html);
+        document.drawContents(&painter);
     }
 }
 
-void MainWindow::showChart()
+void MainWindow::onShowChart()
 {
+    BuyerModel* tabModel = currentTabModel();
+    if (!tabModel) return;
+
+    // Create chart
     QChart *chart = new QChart();
-    chart->setTitle(tr("Распределение типов недвижимости"));
-
-    QBarSet *set = new QBarSet(tr("Количество недвижимости"));
-    QStringList categories;
-
-    // Получите данные из модели
-    QMap<QString, int> propertyTypes;
-    for (int i = 0; i < model->rowCount(); ++i) {
-        QString type = model->data(model->index(i, 6)).toString();
-        propertyTypes[type]++;
-    }
-
-    // Добавьте данные на график
-    for (auto it = propertyTypes.begin(); it != propertyTypes.end(); ++it) {
-        *set << it.value();
-        categories << it.key();
-    }
-
-    QBarSeries *series = new QBarSeries();
-    series->append(set);
-
-    chart->addSeries(series);
+    chart->setTitle(tr("Статистика по типам недвижимости"));
     chart->setAnimationOptions(QChart::SeriesAnimations);
 
+    // Create bar sets for count and average price
+    QBarSet *countSet = new QBarSet(tr("Количество покупок"));
+    QBarSet *priceSet = new QBarSet(tr("Средняя цена (млн руб.)"));
+
+    // Collect data
+    QMap<QString, int> typeCount;
+    QMap<QString, double> typeTotalPrice;
+    QStringList categories;
+
+    for (int i = 0; i < tabModel->rowCount(); ++i) {
+        Buyer buyer = tabModel->getBuyer(i);
+        QString type = buyer.propertyType;
+        double price = buyer.propertyPrice.toDouble();
+
+        typeCount[type]++;
+        typeTotalPrice[type] += price;
+    }
+
+    // Calculate averages and prepare data
+    for (auto it = typeCount.begin(); it != typeCount.end(); ++it) {
+        QString type = it.key();
+        int count = it.value();
+        double avgPrice = typeTotalPrice[type] / count / 1000000.0; // Convert to millions
+
+        categories << type;
+        *countSet << count;
+        *priceSet << avgPrice;
+    }
+
+    // Create series
+    QBarSeries *series = new QBarSeries();
+    series->append(countSet);
+    series->append(priceSet);
+
+    // Add series to chart
+    chart->addSeries(series);
+
+    // Set up axes
     QBarCategoryAxis *axisX = new QBarCategoryAxis();
     axisX->append(categories);
     chart->addAxis(axisX, Qt::AlignBottom);
     series->attachAxis(axisX);
 
     QValueAxis *axisY = new QValueAxis();
-    axisY->setRange(0, set->at(set->count() - 1) * 1.1);
+    axisY->setRange(0, qMax(countSet->at(countSet->count() - 1), priceSet->at(priceSet->count() - 1)) * 1.1);
+    axisY->setTitleText(tr("Значение"));
     chart->addAxis(axisY, Qt::AlignLeft);
     series->attachAxis(axisY);
 
+    // Add legend
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
+
+    // Create and show chart window
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
 
-    QDialog *dialog = new QDialog(this);
-    dialog->setWindowTitle(tr("Распределение типов недвижимости"));
-    dialog->resize(800, 600);
-
-    QVBoxLayout *layout = new QVBoxLayout(dialog);
-    layout->addWidget(chartView);
-    dialog->setLayout(layout);
-
-    dialog->exec();
+    QMainWindow *chartWindow = new QMainWindow(this);
+    chartWindow->setCentralWidget(chartView);
+    chartWindow->resize(1000, 600);
+    chartWindow->setWindowTitle(tr("Статистика по типам недвижимости"));
+    chartWindow->show();
 }
 
 void MainWindow::updateWindowTitle()
@@ -494,4 +556,33 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     saveSettings();
     event->accept();
+}
+
+void MainWindow::onSave()
+{
+    if (currentFile.isEmpty()) {
+        QString fileName = QFileDialog::getSaveFileName(this,
+            tr("Сохранить файл"), "",
+            tr("Текстовые файлы (*.txt);;Все файлы (*)"));
+        if (!fileName.isEmpty()) {
+            currentFile = fileName;
+        } else {
+            return;
+        }
+    }
+    
+    QFile file(currentFile);
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream out(&file);
+        for (int row = 0; row < model->rowCount(); ++row) {
+            Buyer buyer = model->getBuyer(row);
+            out << buyer.firstName << "\t"
+                << buyer.propertyAddress << "\t"
+                << buyer.phoneNumber << "\t"
+                << buyer.email << "\t"
+                << buyer.contractNumber << "\n";
+        }
+        file.close();
+        updateWindowTitle();
+    }
 } 

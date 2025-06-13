@@ -169,9 +169,6 @@ CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 // inside the indicated SDK.
 CMAKE_OSX_SYSROOT:STRING=
 
-//No help, variable specified on the command line.
-CMAKE_PREFIX_PATH:UNINITIALIZED=~/Qt/6.9.0/macos
-
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
 

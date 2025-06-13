@@ -8,6 +8,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
+# Set Qt6 path for macOS
+if(APPLE)
+    set(CMAKE_PREFIX_PATH "$ENV{HOME}/Qt/6.9.0/macos")
+endif()
+
 find_package(Qt6 COMPONENTS
     Core
     Gui
@@ -32,6 +37,8 @@ set(PROJECT_SOURCES
     src/mainwindow.ui
     src/models/buyermodel.cpp
     src/models/buyermodel.h
+    src/models/searchhighlightproxy.cpp
+    src/models/searchhighlightproxy.h
     src/controllers/buyercontroller.cpp
     src/controllers/buyercontroller.h
     src/views/buyerview.cpp
@@ -52,14 +59,18 @@ target_link_libraries(buyerdatabase PRIVATE
     Qt6::PrintSupport
 )
 
-# Install translations
+# Add translation files
 set(TRANSLATIONS
     translations/buyerdatabase_en.ts
     translations/buyerdatabase_ru.ts
 )
 
-qt6_add_translation(QM_FILES ${TRANSLATIONS})
-target_sources(buyerdatabase PRIVATE ${QM_FILES})
+qt_add_translation(QM_FILES ${TRANSLATIONS})
+
+target_sources(buyerdatabase PRIVATE
+    ${QM_FILES}
+    ${PROJECT_SOURCES}
+)
 
 # Install
 install(TARGETS buyerdatabase

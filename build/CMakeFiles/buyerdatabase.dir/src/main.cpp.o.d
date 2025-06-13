@@ -1089,7 +1089,11 @@ CMakeFiles/buyerdatabase.dir/src/main.cpp.o: \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMimeData \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/qmimedata.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QMouseEvent \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTabWidget \
   /Users/alexeymatveev/Desktop/kursovaya/src/views/../models/buyermodel.h \
+  /Users/alexeymatveev/Desktop/kursovaya/src/views/../models/searchhighlightproxy.h \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtGui.framework/Headers/QColor \
+  /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QMap \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QApplication \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
   /Users/alexeymatveev/Qt/6.9.0/macos/lib/QtCore.framework/Headers/QLocale

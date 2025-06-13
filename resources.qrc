@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RCC>
+    <qresource prefix="/">
+        <file>translations/buyerdatabase_en.qm</file>
+        <file>translations/buyerdatabase_ru.qm</file>
+    </qresource>
+</RCC> 
